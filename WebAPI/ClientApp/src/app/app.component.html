@@ -1,0 +1,21 @@
+<body>
+  <div class="container">
+    <h1>Chat Hub</h1>
+    <div *ngIf="connected; else needToLogin">
+      <div>
+        <input #userInput type="text" placeholder="Type your username" [style.width.px]="400"/>
+        <input #messageInput type="text" placeholder="Type your message then press Enter" (keyup)="onEnter($event)" [style.width.px]="400"/>
+        <button (click)="sendMessage()" class="btn-primary">Send</button>
+      </div>
+
+      <ol class="messagesList">
+        <li *ngFor="let msg of messages">{{ msg }}</li>
+      </ol>
+    </div>
+
+    <ng-template #needToLogin>
+      <span>Connecting...</span>
+    </ng-template>
+
+  </div>
+</body>
